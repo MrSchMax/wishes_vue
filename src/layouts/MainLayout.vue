@@ -1,5 +1,8 @@
 <template>
-
+  <button @click.prevent="$store.commit('auth/logout')">Выйти</button>
+  <main>
+    <router-view/>
+  </main>
 </template>
 
 <script>

@@ -1,7 +1,9 @@
 <template>
-  <section class="section">
-    <RouterView />
-  </section>
+  <main>
+    <section class="section">
+      <RouterView/>
+    </section>
+  </main>
 </template>
 
 <script>

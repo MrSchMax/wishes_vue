@@ -48,13 +48,18 @@
 <script >
 import {useField, useForm} from "vee-validate";
 import * as yup from "yup";
+import {useRouter} from "vue-router";
+import {useStore} from "vuex";
 
 export default {
   name: "AuthForm",
   setup() {
-    const { handleSubmit, isSubmitting, submitCount } = useForm()
+    const router = useRouter();
+    const store = useStore();
 
-    const { value: email,    errorMessage: eError, handleBlur: eBlur } = useField(
+    const { handleSubmit, isSubmitting } = useForm()
+
+    const { value: email, errorMessage: eError, handleBlur: eBlur } = useField(
         'email',
         yup
             .string()
@@ -72,11 +77,9 @@ export default {
             .required('Пожалуйста, введите пароль')
             .min(PASSWORD_MIN_LENGTH, `Пароль не может быть короче ${PASSWORD_MIN_LENGTH} символов`))
 
-
     const onSubmit = handleSubmit(async values => {
-      console.log("Data ok!");
-      // const isSuccess = await store.dispatch('auth/login', values);
-      // if (isSuccess) { await router.push('/'); }
+      const isSuccess = await store.dispatch('auth/login', values);
+      if (isSuccess) { await router.push('/'); }
     })
 
     return {

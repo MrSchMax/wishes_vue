@@ -1,7 +1,3 @@
-
-
-import HomeView from '../views/HomeView.vue'
-
 import { createRouter, createWebHistory } from 'vue-router'
 import ListsView from "../views/ListsView.vue";
 import ListView from "../views/ListView.vue";
@@ -10,32 +6,11 @@ import GiftsView from "../views/GiftsView.vue";
 import SigninView from "../views/SigninView.vue";
 import SignupView from "../views/SignupView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
+import store from '../store'
 
 const routes = [
-
   {
     path: '/',
-    name: 'home',
-    component: HomeView,
-    meta: {
-      layout: 'auth',
-      auth: false
-    }
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (About.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('../views/AboutView.vue'),
-    meta: {
-      layout: 'auth',
-      auth: false
-    }
-  },
-  {
-    path: '/lists',
     name: 'lists',
     component: ListsView,
     meta: {
@@ -105,6 +80,16 @@ const router = createRouter({
 
   linkActiveClass: 'active',
   linkExactActiveClass: 'active',
+})
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = store.getters['auth/isAuthenticated'];
+
+  if (isAuthenticated) {
+    (to.name === 'signin' || to.name === 'signup') ? next('/') : next()
+  } else {
+    to.meta.auth ? next('/signin') :  next()
+  }
 })
 
 export default router
