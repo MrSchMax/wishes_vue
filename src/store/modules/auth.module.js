@@ -1,3 +1,6 @@
+import {errorHandler} from "../../utils/error-handler.js";
+
+
 const TOKEN_KEY = import.meta.env.VITE_APP_TOKEN_KEY;
 const API_LINK = import.meta.env.VITE_APP_API_LINK;
 
@@ -37,13 +40,12 @@ export default {
 
                 if (response.ok) {
                     commit('setToken', result.data.jwt);
-                    console.log(result);
                     return true;
                 }
-                console.log(result.error)
+                errorHandler(response.status, result.error)
             }
             catch (e) {
-                console.log(e);
+                errorHandler();
             }
             return false;
         },
