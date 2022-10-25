@@ -35,7 +35,7 @@
         :disabled="isSubmitting || pError || eError"
     >Отправить</button>
 
-    <div class="message" :class="[{hidden: !pError&&!eError}]">
+    <div class="message" v-if="pError||eError">
       <h2 class="message__title">Присутствуют ошибки ввода данных:</h2>
       <ul class="message__list">
         <li class="message__text" v-if="eError">{{eError}}</li>
@@ -48,15 +48,11 @@
 <script >
 import {useField, useForm} from "vee-validate";
 import * as yup from "yup";
-import {useRouter} from "vue-router";
-import {useStore} from "vuex";
 
 export default {
   name: "AuthForm",
-  setup() {
-    const router = useRouter();
-    const store = useStore();
-
+  props: {onSubmit: { type: Function}},
+  setup(props) {
     const { handleSubmit, isSubmitting } = useForm()
 
     const { value: email, errorMessage: eError, handleBlur: eBlur } = useField(
@@ -77,10 +73,7 @@ export default {
             .required('Пожалуйста, введите пароль')
             .min(PASSWORD_MIN_LENGTH, `Пароль не может быть короче ${PASSWORD_MIN_LENGTH} символов`))
 
-    const onSubmit = handleSubmit(async values => {
-      const isSuccess = await store.dispatch('auth/login', values);
-      if (isSuccess) { await router.push('/'); }
-    })
+    const onSubmit = handleSubmit(props.onSubmit)
 
     return {
       email,
@@ -90,16 +83,26 @@ export default {
       eBlur,
       pBlur,
       isSubmitting,
-      onSubmit,
+      onSubmit
     }
   }
 }
 </script>
 
 <style scoped>
-.message {
-  min-height: 72px;
+form {
+  position: relative;
 }
+
+.message {
+  position: absolute;
+  min-height: 72px;
+  top: 100%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, 20px);
+}
+
 .hidden {
   opacity: 0;
 }
