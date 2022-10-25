@@ -7,7 +7,7 @@ export const API_USER_SIGNIN = {
     method: 'POST',
 }
 export const API_USER_SIGNUP = {
-    path: '/user/signup.php',
+    path: '/user/create.php',
     method: 'POST',
 }
 
@@ -28,7 +28,7 @@ export async function callApi({path, method, payload, action}) {
         const result = await response.json();
 
         if (response.ok) {
-            action(result)
+            if (action) action(result)
             return true;
         }
         errorHandler(response.status, result.error)

@@ -21,8 +21,8 @@ export default {
     const store = useStore();
 
     const handlerSubmit = async values => {
-      const isSuccess = await store.dispatch('auth/login', values);
-      if (isSuccess) { await router.push('/'); }
+      const isSuccess = await store.dispatch('auth/signin', values);
+      if (isSuccess) { await router.push({name: 'lists'}); }
     }
 
     return {handlerSubmit}
