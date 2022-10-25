@@ -1,7 +1,7 @@
 <template>
   <header class="header">
 
-    <img class="header__logo" :src="logo" alt="" @click.prevent="$router.push({name: 'lists'})">
+    <img class="header__logo" :src="logo" alt="Логотип" @click.prevent="$router.push({name: 'lists'})">
     <nav class="header__nav" v-if="isAuthenticated">
       <ul class="nav">
         <li class="nav__item">
