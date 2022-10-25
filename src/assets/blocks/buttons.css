@@ -1,0 +1,154 @@
+.button-group {
+    height: 36px;
+    display: flex;
+    gap: 12px;
+}
+
+.button {
+    /*width: 44px;*/
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 20px;
+    background: #4F46E5;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.button:hover {
+    opacity: .6;
+}
+
+.button_outline {
+    padding: 6px 10px;
+    color: #4F46E5;
+    border: 2px solid #4F46E5;
+    background: transparent;
+}
+
+.button_edit {
+    background: url("../image/edit.svg")  center no-repeat;
+}
+
+.button_edit:hover {
+    cursor: pointer;
+    background: #15803D url("../image/edit.svg") center no-repeat;
+}
+
+.button_remove {
+    background: url("../image/remove.svg")  center no-repeat;
+}
+
+.button_remove:hover {
+    background: #B91C1C url("../image/remove.svg")  center no-repeat;
+}
+
+.button-group_card {
+    position: absolute;
+    content: '';
+    bottom: 92px;
+    left: calc(50% - 50px);
+}
+
+.button_color_edit {
+    background: #15803D url("../image/edit.svg") center no-repeat;
+    border-radius: 6px;
+}
+
+.button_color_remove {
+    background: #B91C1C  url("../image/remove.svg") center no-repeat;
+    border-radius: 6px;
+}
+
+.button-create {
+    position: relative;
+    font-family: 'Segoe UI';
+    font-style: normal;
+    width: 105px;
+    background: #4F46E5;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-align: right;
+    padding: 8px 12px;
+    border: none;
+}
+
+.button-create:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 16px;
+    top: 11px;
+    left: 14px;
+    background: url("../image/icon-create.svg") center no-repeat;
+    background-size: contain;
+}
+
+
+/*.button-logout {*/
+/*    font-style: normal;*/
+/*    font-weight: 700;*/
+/*    font-size: 14px;*/
+/*    line-height: 20px;*/
+/*    color: #4F46E5;*/
+/*    border: 2px solid #4F46E5;*/
+/*    background: transparent;*/
+/*    box-sizing: border-box;*/
+/*    padding: 8px 12px;*/
+/*}*/
+
+.button_edit_long {
+    width: 150px;
+    background: #15803D;
+    position: relative;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-align: right;
+    padding: 8px 12px;
+    border: none;
+}
+
+.button_edit_long:after {
+    content: '';
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    top: 9px;
+    left: 14px;
+    background: url("../image/edit.svg") center no-repeat;
+    background-size: contain;
+}
+
+.button_remove_long {
+    width: 104px;
+    background: #B91C1C;
+    position: relative;
+    font-family: 'Segoe UI';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-align: right;
+    padding: 8px 12px;
+    border: none;
+}
+
+.button_remove_long:after {
+    content: '';
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    top: 9px;
+    left: 14px;
+    background: url("../image/remove.svg") center no-repeat;
+    background-size: contain;
+}

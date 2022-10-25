@@ -1,0 +1,23 @@
+.header {
+    max-width: 1200px;
+    padding: 0 12px;
+    border-bottom: 1px solid #D1D5DB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto   ;
+    height: 80px;
+}
+
+.header__logo:hover {
+    opacity: .6;
+}
+
+.header__nav {
+    align-self: stretch;
+}
+
+.header__auth {
+    display: flex;
+    gap: 12px;
+}

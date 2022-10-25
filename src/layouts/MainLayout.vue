@@ -1,13 +1,15 @@
 <template>
-  <button @click.prevent="$store.commit('auth/logout')">Выйти</button>
+  <the-header/>
   <main>
     <router-view/>
   </main>
 </template>
 
 <script>
+import TheHeader from "../components/TheHeader.vue";
 export default {
-  name: "MainLayout"
+  name: "MainLayout",
+  components: {TheHeader}
 }
 </script>
 
