@@ -1,8 +1,7 @@
-import {errorHandler} from "../../utils/error-handler.js";
+import {API_USER_SIGNIN, callApi} from "../../utils/api.js";
 
 
 const TOKEN_KEY = import.meta.env.VITE_APP_TOKEN_KEY;
-const API_LINK = import.meta.env.VITE_APP_API_LINK;
 
 export default {
     namespaced: true,
@@ -23,31 +22,11 @@ export default {
     },
     actions: {
         async login({commit, dispatch}, payload) {
-            try {
-                const url = API_LINK + '/user/signin.php';
-                const response = await fetch(
-                    url,
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json;charset=utf-8'
-                        },
-                        body: JSON.stringify(payload)
-                    }
-                )
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    commit('setToken', result.data.jwt);
-                    return true;
-                }
-                errorHandler(response.status, result.error)
-            }
-            catch (e) {
-                errorHandler();
-            }
-            return false;
+            return await callApi({
+                ...API_USER_SIGNIN,
+                payload,
+                action: (result) => commit('setToken', result.data.jwt)
+            })
         },
     },
     getters: {
