@@ -6,3 +6,21 @@
 @import 'blocks/header.css';
 @import 'blocks/nav.css';
 @import 'blocks/buttons.css';
+@import 'blocks/grid.css';
+@import 'blocks/panel.css';
+@import 'blocks/info.css';
+
+body {
+    position: relative;
+}
+
+.button-close {
+    border: none;
+    background: transparent;
+    color: black;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    content: 'djsfj'
+}

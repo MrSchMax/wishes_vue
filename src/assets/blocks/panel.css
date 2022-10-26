@@ -1,0 +1,12 @@
+.panel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 26px 0;
+}
+
+.panel-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+}

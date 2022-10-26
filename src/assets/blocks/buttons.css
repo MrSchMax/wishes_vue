@@ -30,20 +30,37 @@
 }
 
 .button_edit {
+    padding-left: 32px;
     background: url("../image/edit.svg")  center no-repeat;
 }
 
 .button_edit:hover {
+    opacity: 1;
     cursor: pointer;
     background: #15803D url("../image/edit.svg") center no-repeat;
 }
 
+.button_edit:active {
+    cursor: pointer;
+    background: #22C55E url("../image/edit.svg") center no-repeat;
+}
+
 .button_remove {
+    width: 44px;
+    cursor: pointer;
     background: url("../image/remove.svg")  center no-repeat;
 }
 
 .button_remove:hover {
+    opacity: 1;
+    cursor: pointer;
     background: #B91C1C url("../image/remove.svg")  center no-repeat;
+}
+
+.button_remove:active {
+    opacity: 1;
+    cursor: pointer;
+    background: #EF4444 url("../image/remove.svg")  center no-repeat;
 }
 
 .button-group_card {
@@ -65,7 +82,6 @@
 
 .button-create {
     position: relative;
-    font-family: 'Segoe UI';
     font-style: normal;
     width: 105px;
     background: #4F46E5;
@@ -131,7 +147,6 @@
     width: 104px;
     background: #B91C1C;
     position: relative;
-    font-family: 'Segoe UI';
     font-style: normal;
     font-weight: 600;
     font-size: 14px;

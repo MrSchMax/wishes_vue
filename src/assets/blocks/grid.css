@@ -1,0 +1,26 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 280px);
+    margin: 0 auto;
+    column-gap: 26px;
+    row-gap: 40px;
+    max-width: 1200px;
+}
+
+@media (max-width: 1197px) {
+    .grid {
+        max-width: 892px;
+    }
+}
+
+@media (max-width: 891px) {
+    .grid {
+        max-width: 586px;
+    }
+}
+
+@media (max-width: 585px) {
+    .grid {
+        max-width: 280px;
+    }
+}

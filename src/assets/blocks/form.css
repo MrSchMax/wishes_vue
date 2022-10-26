@@ -9,20 +9,20 @@
 .form__field {
   width: 100%;
   box-sizing: border-box;
-  padding: .5rem .75rem;
+  padding: 8px 12px;
   color: rgb(17 24 39);
 }
 
 .form__field_top {
-  border-top-left-radius: 0.375rem;
-  border-top-right-radius: 0.375rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   border: 1px solid #D1D5DBFF;
   border-bottom: none;
 }
 
 .form__field_bottom {
-  border-bottom-left-radius: 0.375rem;
-  border-bottom-right-radius: 0.375rem;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
   border: 1px solid #D1D5DBFF;
 }
 
@@ -56,8 +56,8 @@
   font-weight: 500;
   color: rgb(255 255 255);
   width: 100%;
-  padding: .5rem .75rem;
-  border-radius: 0.375rem;
+  padding: 8px 12px;
+  border-radius: 6px;
   border: 1px solid transparent;
 }
 
