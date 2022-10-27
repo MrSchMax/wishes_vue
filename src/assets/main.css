@@ -10,6 +10,10 @@
 @import 'blocks/panel.css';
 @import 'blocks/info.css';
 @import 'blocks/modal.css';
+@import 'blocks/card.css';
+@import 'blocks/badge.css';
+@import 'blocks/tag.css';
+@import 'blocks/toogle.css';
 
 body {
     position: relative;

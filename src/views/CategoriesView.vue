@@ -2,7 +2,7 @@
   <preloader v-if="isLoading"/>
   <section v-else class="section section_panel">
     <div class="panel">
-      <span class="info">Всего категорий: <span class="info__number">{{categories.length}}</span></span>
+      <span class="info">Всего подарков: <span class="info__number">{{categories.length}}</span></span>
       <button class="button button-create" @click.prevent="create">Создать</button>
     </div>
     <div class="grid">
@@ -23,7 +23,6 @@
       </div>
     </div>
   </teleport>
-
 </template>
 
 <script>

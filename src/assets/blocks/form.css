@@ -17,7 +17,12 @@
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   border: 1px solid #D1D5DBFF;
-  border-bottom: none;
+  border-bottom: 1px solid transparent;
+}
+
+.form__field_middle {
+  border: 1px solid #D1D5DBFF;
+  border-bottom: 1px solid transparent;
 }
 
 .form__field_bottom {
@@ -27,7 +32,7 @@
 }
 
 .form__field:focus {
-  border-color: rgb(99 102 241);
+  border: 1px solid rgb(99 102 241);
   outline: 2px solid transparent;
   outline-offset: 2px;
   --tw-ring-color: rgb(99 102 241);

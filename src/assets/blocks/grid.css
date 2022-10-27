@@ -7,19 +7,19 @@
     max-width: 1200px;
 }
 
-@media (max-width: 1197px) {
+@media (max-width: 1222px) {
     .grid {
         max-width: 892px;
     }
 }
 
-@media (max-width: 891px) {
+@media (max-width: 915px) {
     .grid {
         max-width: 586px;
     }
 }
 
-@media (max-width: 585px) {
+@media (max-width: 610px) {
     .grid {
         max-width: 280px;
     }

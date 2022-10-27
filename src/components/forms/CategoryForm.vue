@@ -33,7 +33,6 @@
 <script>
 import {useField, useForm} from "vee-validate";
 import * as yup from "yup";
-import {toRef} from "vue";
 
 const CATEGORY_NAME_MIN_LENGTH = 2
 const CATEGORY_NAME_MAX_LENGTH = 100
