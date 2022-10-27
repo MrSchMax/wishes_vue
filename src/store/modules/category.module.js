@@ -40,7 +40,10 @@ export default {
             return await callApi({
                 ...API_CATEGORY_READ_ALL,
                 token: store.getters['auth/token'],
-                action: (result) => commit('setCategories', result.data)
+                action: (result) => {
+                    commit('setCategories', result.data);
+                    commit('setAlreadyUploaded', true);
+                }
             })
         },
         async create({commit}, payload) {

@@ -1,8 +1,8 @@
 import {
-    API_GIFT_CREATE,
-    API_GIFT_DELETE,
-    API_GIFT_READ_ALL,
-    API_GIFT_UPDATE,
+    API_LIST_CREATE,
+    API_LIST_DELETE,
+    API_LIST_READ_ALL,
+    API_LIST_UPDATE,
     callApi
 } from "../../utils/api.js";
 import store from '../index.js'
@@ -12,68 +12,68 @@ export default {
     state () {
         return {
             alreadyUploaded: false,
-            gifts: []
+            lists: []
         }
     },
     mutations: {
         setAlreadyUploaded(state, alreadyUploaded) {
             state.alreadyUploaded = alreadyUploaded;
         },
-        setGifts(state, gifts) {
-            state.gifts = gifts;
+        setLists(state, lists) {
+            state.lists = lists;
         },
-        addGift(state, gift) {
-            state.gifts.push(gift);
+        addList(state, list) {
+            state.lists.push(list);
         },
-        deleteGift(state, id) {
-            state.gifts = state.gifts.filter(c => c.id !== id);
+        deleteList(state, id) {
+            state.lists = state.lists.filter(c => c.id !== id);
         },
-        updateGift(state, gift) {
-            const index = state.gifts.findIndex(c => c.id === gift.id);
+        updateList(state, list) {
+            const index = state.lists.findIndex(c => c.id === list.id);
             if (~index) {
-                state.gifts[index] = gift;
+                state.lists[index] = list;
             }
         }
     },
     actions: {
         async load({commit}) {
             return await callApi({
-                ...API_GIFT_READ_ALL,
+                ...API_LIST_READ_ALL,
                 token: store.getters['auth/token'],
                 action: (result) => {
-                    commit('setGifts', result.data);
+                    commit('setLists', result.data);
                     commit('setAlreadyUploaded', true);
                 }
             })
         },
         async create({commit}, payload) {
             return await callApi({
-                ...API_GIFT_CREATE,
+                ...API_LIST_CREATE,
                 token: store.getters['auth/token'],
                 payload,
-                action: (result) => commit('addGift', result.data)
+                action: (result) => commit('addList', result.data)
             })
         },
         async update({commit}, payload) {
             return await callApi({
-                ...API_GIFT_UPDATE,
+                ...API_LIST_UPDATE,
                 token: store.getters['auth/token'],
                 payload,
-                action: (result) => commit('updateGift', result.data)
+                action: (result) => commit('updateList', result.data)
             })
         },
         async delete({commit}, id) {
             return await callApi({
-                ...API_GIFT_DELETE,
+                ...API_LIST_DELETE,
                 token: store.getters['auth/token'],
                 payload: {id},
-                action: () => commit('deleteGift', id)
+                action: () => commit('deleteList', id)
             })
         },
     },
     getters: {
-        gifts(state) {
-            return state.gifts;
+        lists(state) {
+            return state.lists;
         },
         alreadyUploaded(state) {
             return state.alreadyUploaded;
