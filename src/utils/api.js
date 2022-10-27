@@ -57,6 +57,29 @@ export const API_GIFT_UPDATE = {
     method: 'PUT',
 }
 
+// LIST
+export const API_LIST_READ_ALL = {
+    path: '/list/read_all.php',
+    method: 'GET',
+}
+
+export const API_LIST_CREATE = {
+    path: '/list/create.php',
+    method: 'POST',
+}
+
+export const API_LIST_DELETE = {
+    path: '/list/delete.php',
+    method: 'DELETE',
+}
+
+export const API_LIST_UPDATE = {
+    path: '/list/update.php',
+    method: 'PUT',
+}
+
+
+
 
 export async function callApi({path, method, payload, action, token}) {
     try {
