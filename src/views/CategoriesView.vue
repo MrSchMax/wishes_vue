@@ -47,7 +47,6 @@ export default {
       }
       await store.dispatch('category/load');
       isLoading.value = false;
-      !store.commit('category/setAlreadyUploaded', true);
     });
 
     const current = ref(null);

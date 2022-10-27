@@ -34,33 +34,10 @@
     background: url("../image/edit.svg")  center no-repeat;
 }
 
-.button_edit:hover {
-    opacity: 1;
-    cursor: pointer;
-    background: #15803D url("../image/edit.svg") center no-repeat;
-}
-
-.button_edit:active {
-    cursor: pointer;
-    background: #22C55E url("../image/edit.svg") center no-repeat;
-}
-
 .button_remove {
     width: 44px;
     cursor: pointer;
     background: url("../image/remove.svg")  center no-repeat;
-}
-
-.button_remove:hover {
-    opacity: 1;
-    cursor: pointer;
-    background: #B91C1C url("../image/remove.svg")  center no-repeat;
-}
-
-.button_remove:active {
-    opacity: 1;
-    cursor: pointer;
-    background: #EF4444 url("../image/remove.svg")  center no-repeat;
 }
 
 .button-group_card {
@@ -75,9 +52,33 @@
     border-radius: 6px;
 }
 
+.button_edit:hover {
+    opacity: 1;
+    cursor: pointer;
+    background: #15803D url("../image/edit.svg") center no-repeat;
+}
+
+.button_edit:active {
+    cursor: pointer;
+    background: #22C55E url("../image/edit.svg") center no-repeat;
+}
+
 .button_color_remove {
     background: #B91C1C  url("../image/remove.svg") center no-repeat;
     border-radius: 6px;
+}
+
+
+.button_remove:hover {
+    opacity: 1;
+    cursor: pointer;
+    background: #B91C1C url("../image/remove.svg")  center no-repeat;
+}
+
+.button_remove:active {
+    opacity: 1;
+    cursor: pointer;
+    background: #EF4444 url("../image/remove.svg")  center no-repeat;
 }
 
 .button-create {

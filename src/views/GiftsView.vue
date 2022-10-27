@@ -61,7 +61,6 @@ export default {
       }
       await store.dispatch('gift/load');
       isLoading.value = false;
-      !store.commit('gift/setAlreadyUploaded', true);
     });
 
     const current = ref(null);
@@ -108,5 +107,14 @@ a {
   text-decoration: none;
   display: flex;
   flex-direction: column;
+}
+
+.button_edit, .button_remove {
+  border-radius: 0;
+}
+
+.card__footer {
+  justify-content: center;
+
 }
 </style>
