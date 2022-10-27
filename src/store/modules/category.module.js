@@ -11,11 +11,14 @@ export default {
     namespaced: true,
     state () {
         return {
-            current: null,
+            alreadyUploaded: false,
             categories: []
         }
     },
     mutations: {
+        setAlreadyUploaded(state, alreadyUploaded) {
+            state.alreadyUploaded = alreadyUploaded;
+        },
         setCategories(state, categories) {
             state.categories = categories;
         },
@@ -30,9 +33,6 @@ export default {
             if (~index) {
                 state.categories[index] = category;
             }
-        },
-        setCurrent(state, category) {
-            state.current = category;
         }
     },
     actions: {
@@ -52,20 +52,19 @@ export default {
             })
         },
         async update({commit}, payload) {
-            const id = store.getters['category/current'].id;
             return await callApi({
                 ...API_CATEGORY_UPDATE,
                 token: store.getters['auth/token'],
-                payload: {...payload, id},
+                payload,
                 action: (result) => commit('updateCategory', result.data)
             })
         },
-        async delete({commit}, payload) {
+        async delete({commit}, id) {
             return await callApi({
                 ...API_CATEGORY_DELETE,
                 token: store.getters['auth/token'],
-                payload,
-                action: () => commit('deleteCategory', payload.id)
+                payload: {id},
+                action: () => commit('deleteCategory', id)
             })
         },
     },
@@ -73,8 +72,8 @@ export default {
         categories(state) {
             return state.categories;
         },
-        current(state) {
-            return state.current;
-        }
+        alreadyUploaded(state) {
+            return state.alreadyUploaded;
+        },
     }
 }

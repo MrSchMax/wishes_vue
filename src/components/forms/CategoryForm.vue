@@ -40,10 +40,8 @@ const CATEGORY_NAME_MAX_LENGTH = 100
 
 export default {
   name: "CategoryForm",
-  props: {onSubmit: { type: Function}, name},
+  props: {onSubmit: { type: Function}, current: {default: null}},
   setup(props) {
-
-    const {name} = toRef(props);
 
     const { handleSubmit, isSubmitting } = useForm()
 
@@ -58,11 +56,19 @@ export default {
             .matches(/^[-\p{L} _\d]+$/u)
     );
 
-    if (props.name) {
-      value.value = props.name;
+    if (props.current) {
+      value.value = props.current.name;
     }
 
-    const onSubmit = handleSubmit(props.onSubmit)
+    const onSubmit = handleSubmit(  async values => {
+      if (props.current) {
+        if (props.current.name === values.name) {
+          return props.onSubmit(null);
+        }
+        values.id = props.current.id
+      }
+      return props.onSubmit(values);
+    })
 
     return {
       value,

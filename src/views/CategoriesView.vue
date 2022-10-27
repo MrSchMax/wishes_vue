@@ -1,11 +1,12 @@
 <template>
-  <section class="section section_panel">
+  <preloader v-if="isLoading"/>
+  <section v-else class="section section_panel">
     <div class="panel">
-      <span class="info">Всего наименований в списке: <span class="info__number">{{categories.length}}</span></span>
+      <span class="info">Всего категорий: <span class="info__number">{{categories.length}}</span></span>
       <button class="button button-create" @click.prevent="create">Создать</button>
     </div>
     <div class="grid">
-      <div class="category" v-for="category in categories" :key="category.id">
+      <div class="category" v-for="category in categories" :key="category.id" :class="{hidden: category.hidden}">
         <p class="category__title">{{category.name}}</p>
         <div class="button-group">
           <button class="button button_edit" @click.prevent="update(category)"></button>
@@ -17,7 +18,7 @@
   <teleport to="body">
     <div class="modal" v-if="modal" @click.self.prevent="modal=false">
       <div class="modal__wrapper">
-        <category-form :on-submit="onSubmit" :name="currentName"/>
+        <category-form :on-submit="onSubmit" :current="current"/>
         <span class="button-close" @click.prevent="modal=false">&times;</span>
       </div>
     </div>
@@ -29,48 +30,58 @@
 import {computed, onMounted, ref} from "vue";
 import {useStore} from "vuex";
 import CategoryForm from "../components/forms/CategoryForm.vue";
+import Preloader from "../components/preloader.vue";
 
 export default {
   name: "CategoriesView",
-  components: {CategoryForm},
+  components: {Preloader, CategoryForm},
   setup() {
     const store = useStore();
 
     const modal = ref(false);
-    const currentName = ref('');
-    onMounted(async () => await store.dispatch('category/load'));
-
+    const isLoading = ref(false);
     const categories = computed(() => store.getters['category/categories']);
-    const current = computed(() => store.getters['category/current']);
 
-    const removeAction = async values => await store.dispatch('category/delete', values);
+    onMounted(async () => {
+      if (!store.getters['category/alreadyUploaded']) {
+        isLoading.value = true;
+      }
+      await store.dispatch('category/load');
+      isLoading.value = false;
+      !store.commit('category/setAlreadyUploaded', true);
+    });
+
+    const current = ref(null);
+
+    const removeAction = async values => {
+      values.hidden = true;
+      if (!await store.dispatch('category/delete', values.id)) {values.hidden = false}
+    };
+
     const createAction = async values => await store.dispatch('category/create', values);
     const updateAction = async values => await store.dispatch('category/update', values);
 
     const submitAction = ref(createAction)
-
-
     const onSubmit = async (values) => {
-      if (await submitAction.value(values)) {
+      if (values === null || await submitAction.value(values)) {
         modal.value = false;
       }
     }
 
     const update = async (values) => {
-      currentName.value = values.name;
-      modal.value = true;
-      store.commit('category/setCurrent', values);
+      current.value = values;
       submitAction.value = updateAction;
+      modal.value = true;
     }
 
-    const create = async (values) => {
-      currentName.value = '';
+    const create = async () => {
+      current.value = null;
+      submitAction.value = createAction;
       modal.value = true;
-      return submitAction.value = createAction;
     }
 
     return {
-      categories, removeAction, modal, onSubmit, update, create, currentName, current
+      categories, removeAction, modal, onSubmit, update, create, current, isLoading
     }
   }
 }
@@ -109,31 +120,7 @@ export default {
 .button:hover {
   opacity: 1;
 }
-
-.modal {
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100vh;
-  min-height: 100vh;
-  position: absolute;
-  top: 0;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+.hidden {
+  display: none;
 }
-.modal__wrapper {
-  background: #F9FAFB;
-  width: 100%;
-  max-width: 414px;
-  padding: 20px;
-  border-radius: 10px;
-  position: relative;
-}
-
-
-
-
 </style>
