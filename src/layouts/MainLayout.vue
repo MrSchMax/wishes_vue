@@ -14,5 +14,9 @@ export default {
 </script>
 
 <style scoped>
-
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
 </style>

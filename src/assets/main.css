@@ -9,6 +9,7 @@
 @import 'blocks/grid.css';
 @import 'blocks/panel.css';
 @import 'blocks/info.css';
+@import 'blocks/modal.css';
 
 body {
     position: relative;
