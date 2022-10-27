@@ -1,7 +1,11 @@
 import {errorHandler} from "./error-handler.js";
 
 const API_LINK = import.meta.env.VITE_APP_API_LINK;
+const HEADERS = {
+    'Content-Type': 'application/json;charset=utf-8'
+}
 
+// USER
 export const API_USER_SIGNIN = {
     path: '/user/signin.php',
     method: 'POST',
@@ -11,6 +15,7 @@ export const API_USER_SIGNUP = {
     method: 'POST',
 }
 
+// CATEGORY
 export const API_CATEGORY_READ_ALL = {
     path: '/category/read_all.php',
     method: 'GET',
@@ -31,9 +36,27 @@ export const API_CATEGORY_UPDATE = {
     method: 'PUT',
 }
 
-const HEADERS = {
-    'Content-Type': 'application/json;charset=utf-8'
+// GIFT
+export const API_GIFT_READ_ALL = {
+    path: '/gift/read_all.php',
+    method: 'GET',
 }
+
+export const API_GIFT_CREATE = {
+    path: '/gift/create.php',
+    method: 'POST',
+}
+
+export const API_GIFT_DELETE = {
+    path: '/gift/delete.php',
+    method: 'DELETE',
+}
+
+export const API_GIFT_UPDATE = {
+    path: '/gift/update.php',
+    method: 'PUT',
+}
+
 
 export async function callApi({path, method, payload, action, token}) {
     try {
