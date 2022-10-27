@@ -1,6 +1,8 @@
 import { createStore } from 'vuex';
 import auth from './modules/auth.module.js';
 import category from './modules/category.module.js';
+import gift from './modules/gift.module.js';
+import list from './modules/list.module.js';
 
 export default createStore({
   state: {
@@ -12,6 +14,8 @@ export default createStore({
   actions: {
   },
   modules: {
-    auth, category
+    auth,
+    category,
+    gift,
   }
 })
