@@ -35,7 +35,7 @@ const isAuthenticated = store.getters['auth/isAuthenticated'];
 
 const logout = () => {
   store.commit('auth/logout');
-  router.push('signin');
+  router.push({name: 'signin'});
 }
 </script>
 

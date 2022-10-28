@@ -88,7 +88,7 @@ router.beforeEach((to, from, next) => {
   if (isAuthenticated) {
     (to.name === 'signin' || to.name === 'signup') ? next('/') : next()
   } else {
-    to.meta.auth ? next('/signin') :  next()
+    to.meta.auth ? next({name: 'signin'}) :  next()
   }
 })
 
