@@ -83,6 +83,17 @@
 
 
 
+
 .form-hidden {
   display: none;
+}
+.form__wrapper {
+  background: white;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border: 1px solid #D1D5DBFF;
+  border-radius: 6px;
+  max-height: 422px;
+  overflow: auto;
 }

@@ -18,7 +18,7 @@
             <button class="button button_edit button_color_edit" @click.prevent="update(gift)"></button>
             <button class="button button_remove button_color_remove" @click.prevent="removeAction(gift)"></button>
           </div>
-          <div class="card__footer">
+          <div class="card__footer card__footer_gift">
             <h2 class="card__title">{{ gift.name }}</h2>
           </div>
         </article>
@@ -108,8 +108,8 @@ a {
   display: flex;
   flex-direction: column;
 }
-
-.card__footer {
-  justify-content: center;
+.card__title {
+  margin-bottom: 0;
 }
+
 </style>

@@ -42,6 +42,13 @@
     background: url("../image/remove.svg")  center no-repeat;
 }
 
+.button_copy {
+    opacity: 0.8;
+    padding-left: 32px;
+    cursor: pointer;
+    background: url("../image/remove.svg")  center no-repeat;
+}
+
 .button-group_card {
     position: absolute;
     content: '';
@@ -70,7 +77,6 @@
     border-radius: 6px;
 }
 
-
 .button_remove:hover {
     opacity: 1;
     cursor: pointer;
@@ -81,6 +87,23 @@
     opacity: 1;
     cursor: pointer;
     background: #EF4444 url("../image/remove.svg")  center no-repeat;
+}
+
+.button_color_copy {
+    background: #4F46E5  url("../image/copy.svg") center no-repeat;
+    border-radius: 6px;
+}
+
+.button_copy:hover {
+    opacity: 1;
+    cursor: pointer;
+    background: #4F46E5 url("../image/copy.svg")  center no-repeat;
+}
+
+.button_copy:active {
+    opacity: 1;
+    cursor: pointer;
+    background: #1F2937 url("../image/copy.svg")  center no-repeat;
 }
 
 .button-create {

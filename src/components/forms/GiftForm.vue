@@ -1,7 +1,7 @@
 <template>
   <h3 class="section__title">Данные подарка</h3>
   <form class="form" name="form" @submit.prevent="onSubmit">
-    <div class="form-inputs">
+    <div class="form__inputs">
       <label for="name">
         <input
             class="form__field form__field_top"

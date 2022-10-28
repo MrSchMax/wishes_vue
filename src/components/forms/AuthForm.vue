@@ -1,6 +1,6 @@
 <template>
   <form class="form" name="form" @submit.prevent="onSubmit">
-    <div class="form-inputs">
+    <div class="form__inputs">
       <label for="email">
         <input
             class="form__field form__field_top"

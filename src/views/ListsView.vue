@@ -13,7 +13,7 @@
       >
         <article class="card">
           <div class="tags-group">
-            <span class="tag" v-for="tag in list.categories">{{ tag.name }}</span>
+            <span class="tag tag_checked" v-for="tag in list.categories" :key="tag.id">{{ tag.name }}</span>
           </div>
           <div class="badge-group">
             <span class="badge">{{list.gifts ? list.gifts.length : 0}}</span>
@@ -24,6 +24,7 @@
           <div class="button-group button-group_card">
             <button class="button button_edit button_color_edit" @click.prevent="update(list)"></button>
             <button class="button button_remove button_color_remove" @click.prevent="removeAction(list)"></button>
+            <button class="button button_copy button_color_copy" @click.prevent="copyAction(list)"></button>
           </div>
           <div class="card__footer">
             <h2 class="card__title">{{ list.name }}</h2>
@@ -134,11 +135,6 @@ export default {
 </script>
 
 <style scoped>
-
-.button_remove:hover,
-.button_edit:hover {
-  opacity: 0.8;
-}
 .hidden {
   display: none;
 }
@@ -149,6 +145,17 @@ a {
 }
 
 .modal__wrapper {
-  max-width: 956px;
+  max-width: 958px;
+}
+
+.button-group_card {
+  left: calc(50% - 78px);
+}
+.card__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
