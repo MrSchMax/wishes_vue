@@ -1,6 +1,6 @@
 import {
     API_LIST_CREATE,
-    API_LIST_DELETE,
+    API_LIST_DELETE, API_LIST_READ,
     API_LIST_READ_ALL,
     API_LIST_UPDATE,
     callApi
@@ -11,6 +11,7 @@ export default {
     namespaced: true,
     state () {
         return {
+            requested: null,
             alreadyUploaded: false,
             lists: []
         }
@@ -21,6 +22,9 @@ export default {
         },
         setLists(state, lists) {
             state.lists = lists;
+        },
+        setRequested(state, list) {
+            state.requested = list;
         },
         addList(state, list) {
             state.lists.push(list);
@@ -36,6 +40,16 @@ export default {
         }
     },
     actions: {
+        async loadOne({commit}, id) {
+            return await callApi({
+                ...API_LIST_READ,
+                token: store.getters['auth/token'],
+                payload: {id},
+                action: (result) => {
+                    commit('setRequested', result.data);
+                }
+            })
+        },
         async load({commit}) {
             return await callApi({
                 ...API_LIST_READ_ALL,
@@ -77,6 +91,9 @@ export default {
         },
         alreadyUploaded(state) {
             return state.alreadyUploaded;
+        },
+        requested(state) {
+            return state.requested;
         },
     }
 }

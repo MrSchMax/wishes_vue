@@ -92,6 +92,10 @@ export default {
       if (!await store.dispatch('list/delete', values.id)) {values.hidden = false}
     };
 
+    const copyAction = async values => {
+      await navigator.clipboard.writeText(document.location.origin + '/lists/' + values.id);
+    };
+
     const prepareValues = (values) => {
       const res = {...values};
       res.categories = res.categories ? res.categories.map(it => it.id) : [];
@@ -128,7 +132,7 @@ export default {
     };
 
     return {
-      lists, removeAction, modal, onSubmit, update, create, current, isLoading, defaultImg, publicClick
+      lists, removeAction, modal, onSubmit, update, create, current, isLoading, defaultImg, publicClick, copyAction
     }
   }
 }

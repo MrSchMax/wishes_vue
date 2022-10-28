@@ -62,6 +62,10 @@ export const API_LIST_READ_ALL = {
     path: '/list/read_all.php',
     method: 'GET',
 }
+export const API_LIST_READ = {
+    path: '/list/read.php',
+    method: 'POST',
+}
 
 export const API_LIST_CREATE = {
     path: '/list/create.php',
