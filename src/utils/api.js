@@ -108,7 +108,7 @@ export async function callApi({path, method, payload, action, token}) {
             if (action) action(result)
             return true;
         }
-        errorHandler(response.status, result.error)
+        errorHandler(response.status, result)
     }
     catch (e) {
         console.log(e)

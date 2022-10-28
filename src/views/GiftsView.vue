@@ -67,7 +67,14 @@ export default {
 
     const removeAction = async values => {
       values.hidden = true;
-      if (!await store.dispatch('gift/delete', values.id)) {values.hidden = false}
+      if (!await store.dispatch('gift/delete', values.id)) {
+        values.hidden = false
+      } else {
+        await store.dispatch('message/setMessage', {
+          text: 'Подарок успешно удалён',
+          type: 'success'
+        })
+      }
     };
 
     const createAction = async values => await store.dispatch('gift/create', values);

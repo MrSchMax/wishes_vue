@@ -53,7 +53,14 @@ export default {
 
     const removeAction = async values => {
       values.hidden = true;
-      if (!await store.dispatch('category/delete', values.id)) {values.hidden = false}
+      if (!await store.dispatch('category/delete', values.id)) {
+        values.hidden = false
+      } else {
+        await store.dispatch('message/setMessage', {
+          text: 'Категория успешно удалёна',
+          type: 'success'
+        })
+      }
     };
 
     const createAction = async values => await store.dispatch('category/create', values);

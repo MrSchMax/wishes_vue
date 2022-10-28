@@ -3,6 +3,7 @@ import auth from './modules/auth.module.js';
 import category from './modules/category.module.js';
 import gift from './modules/gift.module.js';
 import list from './modules/list.module.js';
+import message from './modules/message.module.js';
 
 export default createStore({
   state: {
@@ -17,6 +18,7 @@ export default createStore({
     auth,
     category,
     gift,
-    list
+    list,
+    message
   }
 })

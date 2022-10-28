@@ -89,11 +89,22 @@ export default {
 
     const removeAction = async values => {
       values.hidden = true;
-      if (!await store.dispatch('list/delete', values.id)) {values.hidden = false}
+      if (!await store.dispatch('list/delete', values.id)) {
+        values.hidden = false
+      } else {
+        await store.dispatch('message/setMessage', {
+          text: 'Список успешно удалён',
+          type: 'success'
+        })
+      }
     };
 
     const copyAction = async values => {
       await navigator.clipboard.writeText(document.location.origin + '/lists/' + values.id);
+      await store.dispatch('message/setMessage', {
+        text: 'Cсылка на список успешно скопирована в буфер обмена',
+        type: 'success'
+      })
     };
 
     const prepareValues = (values) => {
