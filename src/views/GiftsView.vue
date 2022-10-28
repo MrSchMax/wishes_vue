@@ -109,12 +109,7 @@ a {
   flex-direction: column;
 }
 
-.button_edit, .button_remove {
-  border-radius: 0;
-}
-
 .card__footer {
   justify-content: center;
-
 }
 </style>

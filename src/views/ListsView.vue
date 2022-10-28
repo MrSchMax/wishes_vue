@@ -147,4 +147,8 @@ a {
   display: flex;
   flex-direction: column;
 }
+
+.modal__wrapper {
+  max-width: 956px;
+}
 </style>

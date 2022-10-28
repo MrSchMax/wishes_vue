@@ -9,8 +9,8 @@
       <div class="category" v-for="category in categories" :key="category.id" :class="{hidden: category.hidden}">
         <p class="category__title">{{category.name}}</p>
         <div class="button-group">
-          <button class="button button_edit" @click.prevent="update(category)"></button>
-          <button class="button button_remove" @click.prevent="removeAction(category)"></button>
+          <button class="button button_edit button_category" @click.prevent="update(category)"></button>
+          <button class="button button_remove button_category" @click.prevent="removeAction(category)"></button>
         </div>
       </div>
     </div>
@@ -111,12 +111,8 @@ export default {
 .button-group {
   gap: 0;
 }
-.button_edit, .button_remove {
+.button_category {
   border-radius: 0;
-}
-
-.button:hover {
-  opacity: 1;
 }
 .hidden {
   display: none;

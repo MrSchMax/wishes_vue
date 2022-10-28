@@ -2,7 +2,7 @@
   <h3 class="section__title">Данные списка</h3>
   <form class="form" name="form" @submit.prevent="onSubmit">
     <div class="form-inputs">
-      <label for="name">
+      <label for="name" >
         <input
             class="form__field form__field_bottom form__field_top"
             type="text"
@@ -112,5 +112,17 @@ export default {
 </script>
 
 <style scoped>
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+label[for="name"] {
+  width: 100%;
+}
+.toggle-wrapper {
+  margin: 20px auto 0;
+}
 
 </style>

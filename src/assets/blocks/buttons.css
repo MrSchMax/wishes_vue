@@ -30,12 +30,14 @@
 }
 
 .button_edit {
+    opacity: 0.8;
     padding-left: 32px;
     background: url("../image/edit.svg")  center no-repeat;
 }
 
 .button_remove {
-    width: 44px;
+    opacity: 0.8;
+    padding-left: 32px;
     cursor: pointer;
     background: url("../image/remove.svg")  center no-repeat;
 }

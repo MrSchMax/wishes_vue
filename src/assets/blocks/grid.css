@@ -13,13 +13,13 @@
     }
 }
 
-@media (max-width: 915px) {
+@media (max-width: 929px) {
     .grid {
         max-width: 586px;
     }
 }
 
-@media (max-width: 610px) {
+@media (max-width: 624px) {
     .grid {
         max-width: 280px;
     }
