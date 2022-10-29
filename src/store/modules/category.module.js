@@ -33,7 +33,12 @@ export default {
             if (~index) {
                 state.categories[index] = category;
             }
+        },
+        reset(state) {
+            state.alreadyUploaded = false;
+            state.categories = [];
         }
+
     },
     actions: {
         async load({commit}) {

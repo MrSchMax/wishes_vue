@@ -37,6 +37,10 @@ export default {
             if (~index) {
                 state.lists[index] = list;
             }
+        },
+        reset(state) {
+            state.alreadyUploaded = false;
+            state.lists = [];
         }
     },
     actions: {

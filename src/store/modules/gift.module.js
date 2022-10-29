@@ -33,6 +33,10 @@ export default {
             if (~index) {
                 state.gifts[index] = gift;
             }
+        },
+        reset(state) {
+            state.alreadyUploaded = false;
+            state.gifts = [];
         }
     },
     actions: {

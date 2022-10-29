@@ -35,6 +35,10 @@ const isAuthenticated = store.getters['auth/isAuthenticated'];
 
 const logout = () => {
   store.commit('auth/logout');
+  store.commit('category/reset');
+  store.commit('gift/reset');
+  store.commit('list/reset');
+  store.commit('message/clearMessage');
   router.push({name: 'signin'});
 }
 </script>
